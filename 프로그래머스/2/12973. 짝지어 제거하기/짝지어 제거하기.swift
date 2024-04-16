@@ -1,15 +1,11 @@
-import Foundation
-
-func solution(_ s:String) -> Int{
-    var str = s.map { $0 }
+func solution(_ s: String) -> Int {
     var stack: [Character] = []
-    for i in 0..<str.count {
-        if !stack.isEmpty && stack[stack.count-1] == str[i] {
-            let _ = stack.popLast()
+    for char in s {
+        if let top = stack.last, top == char {
+            stack.removeLast()
         } else {
-            stack.append(str[i])
+            stack.append(char)
         }
     }
-
     return stack.isEmpty ? 1 : 0
 }
