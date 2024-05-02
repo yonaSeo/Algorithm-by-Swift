@@ -9,12 +9,9 @@ func solution(_ s:String, _ n:Int) -> String {
     let charArray = s.map { (char: Character) -> Character in
         var ascii = Int(char.asciiValue!)
         switch ascii {
-            case a...z:
-                if ascii + n > z { ascii -= (z-a+1) }
-            case A...Z:
-                if ascii + n > Z { ascii -= (Z-A+1) }
-            default:
-                return char
+            case a...z: if ascii + n > z { ascii -= (z-a+1) }
+            case A...Z: if ascii + n > Z { ascii -= (Z-A+1) }
+            default: return char
         }
         return Character(UnicodeScalar(ascii + n)!)
     }
